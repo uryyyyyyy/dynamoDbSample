@@ -1,6 +1,6 @@
 package com.github.uryyyyyyy.dynamodb.core
 
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider
+import com.amazonaws.auth.{BasicAWSCredentials, EnvironmentVariableCredentialsProvider}
 import com.amazonaws.regions.{Region, Regions}
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient
 import com.amazonaws.services.dynamodbv2.document.DynamoDB
@@ -13,6 +13,13 @@ object DynamoUtils {
 
 	def init(): DynamoDB = {
 		val credentials = new EnvironmentVariableCredentialsProvider()
+		val client = new AmazonDynamoDBClient(credentials)
+		client.setRegion(Region.getRegion(Regions.AP_NORTHEAST_1))
+		new DynamoDB(client)
+	}
+
+	def setupDynamoClientConnection(accessKey:String, secretKey:String): DynamoDB = {
+		val credentials = new BasicAWSCredentials(accessKey, secretKey)
 		val client = new AmazonDynamoDBClient(credentials)
 		client.setRegion(Region.getRegion(Regions.AP_NORTHEAST_1))
 		new DynamoDB(client)
