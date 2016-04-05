@@ -1,11 +1,18 @@
-name := """dynamoDbSampleClient"""
+name := """dynamoDbClients"""
 
 version := "1.0"
 
-scalaVersion := "2.11.7"
-
-libraryDependencies ++= Seq(
-	"com.amazonaws" % "aws-java-sdk-dynamodb" % "1.10.62",
-	"ch.qos.logback" % "logback-classic" % "1.1.6",
-	"com.typesafe" % "config" % "1.3.0"
+lazy val commonSettings = Seq(
+	organization := "com.github.uryyyyyyy",
+	scalaVersion := "2.11.7"
 )
+
+
+lazy val helloWorld = (project in file("helloWorld")).
+	settings(commonSettings: _*).dependsOn(core)
+
+lazy val sparkBatch = (project in file("sparkBatch")).
+	settings(commonSettings: _*).dependsOn(core)
+
+lazy val core = (project in file("core")).
+	settings(commonSettings: _*)
