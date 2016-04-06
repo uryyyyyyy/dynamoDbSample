@@ -10,7 +10,7 @@ import com.typesafe.config.ConfigFactory
 
 object SampleTable {
 
-	val tableName = "sample2"
+	val tableName = "shiba_test"
 
 	val id = ("Id", classOf[Int])
 

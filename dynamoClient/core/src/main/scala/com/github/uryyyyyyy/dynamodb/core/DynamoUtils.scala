@@ -18,7 +18,7 @@ object DynamoUtils {
 		new DynamoDB(client)
 	}
 
-	def setupDynamoClientConnection(accessKey:String, secretKey:String): DynamoDB = {
+	def init(accessKey:String, secretKey:String): DynamoDB = {
 		val credentials = new BasicAWSCredentials(accessKey, secretKey)
 		val client = new AmazonDynamoDBClient(credentials)
 		client.setRegion(Region.getRegion(Regions.AP_NORTHEAST_1))
