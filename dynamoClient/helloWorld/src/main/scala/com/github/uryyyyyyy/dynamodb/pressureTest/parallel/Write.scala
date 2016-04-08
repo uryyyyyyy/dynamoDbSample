@@ -4,18 +4,16 @@ import com.amazonaws.services.dynamodbv2.document.{Item, Table}
 import com.github.uryyyyyyy.dynamodb.core.table.SampleTable
 import com.github.uryyyyyyy.dynamodb.core.{DynamoUtils, MeasurementUtility}
 import com.typesafe.config.ConfigFactory
-import org.slf4j.LoggerFactory
 
 object Write {
 
-	val logger = LoggerFactory.getLogger("logger_name")
 	val config = ConfigFactory.load()
 
 	var count = 0
 
 	def main(args: Array[String]): Unit = {
 
-		logger.info("start")
+		println("start")
 		val dynamoDB = DynamoUtils.init()
 		val table = SampleTable.getTable(dynamoDB)
 

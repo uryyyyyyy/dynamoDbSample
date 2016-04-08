@@ -1,6 +1,6 @@
 package com.github.uryyyyyyy.dynamodb.core
 
-import com.amazonaws.auth.{BasicAWSCredentials, EnvironmentVariableCredentialsProvider}
+import com.amazonaws.auth.{AWSCredentialsProvider, BasicAWSCredentials, EnvironmentVariableCredentialsProvider}
 import com.amazonaws.regions.{Region, Regions}
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient
 import com.amazonaws.services.dynamodbv2.document.DynamoDB
@@ -10,6 +10,10 @@ object DynamoUtils {
 
 	val conf = ConfigFactory.load()
 	lazy val s3BucketName = conf.getString("s3.bucketName")
+
+	def credential(): AWSCredentialsProvider = {
+		new EnvironmentVariableCredentialsProvider()
+	}
 
 	def init(): DynamoDB = {
 		val credentials = new EnvironmentVariableCredentialsProvider()
