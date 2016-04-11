@@ -14,7 +14,7 @@ lazy val helloWorld = (project in file("helloWorld")).
 	settings(commonSettings: _*).dependsOn(core)
 
 lazy val sparkBatch = (project in file("sparkBatch")).
-	settings(commonSettings: _*).dependsOn(core)
+	settings(commonSettings: _*).dependsOn(core).dependsOn(sqsFallBackWriter)
 
 lazy val sqsFallBackCore = (project in file("sqsFallBackCore")).
 	settings(commonSettings: _*).dependsOn(core)

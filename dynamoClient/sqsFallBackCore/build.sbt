@@ -9,5 +9,6 @@ libraryDependencies ++= Seq(
 	"com.amazonaws" % "aws-java-sdk-sqs" % awsSdkVersion,
 	"org.json4s" %% "json4s-native" % json4sVersion,
 	"org.json4s" %% "json4s-jackson" % json4sVersion,
-	"org.json4s" %% "json4s-ext" % json4sVersion
+	"org.json4s" %% "json4s-ext" % json4sVersion,
+	"com.esotericsoftware.kryo" % "kryo" % "2.24.0"
 )
